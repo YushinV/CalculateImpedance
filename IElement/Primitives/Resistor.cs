@@ -4,19 +4,30 @@ using System.Numerics;
 namespace Elements
 {
     /// <summary>
-    /// Класс катушки индуктивности
+    /// Класс резистора
     /// </summary>
-    public class Inductor
+    public class Resistor : IComponent
     {
+        /// <summary>
+        /// Конструктор резистора
+        /// </summary>
+        /// <param name="name">уникальное имя конденсатора</param>
+        /// <param name="value">емкость конденсатора</param>
+        public Resistor(string name, double value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         #region локальные переменные класса
 
         /// <summary>
-        /// Уникальное имя катушки 
+        /// Уникальное имя резистора
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// Индуктивность катушки
+        /// Сопротивление резистора
         /// </summary>
         private double _value;
 
@@ -24,7 +35,7 @@ namespace Elements
 
         #region свойства класса
         /// <summary>
-        /// Аксессор получения имени катушки
+        /// Аксессор получения имени резистора
         /// </summary>
         public string Name
         {
@@ -39,7 +50,7 @@ namespace Elements
         }
 
         /// <summary>
-        /// Аксессор получения индуктивности катушки
+        /// Аксессор получения сопротивления резистора
         /// </summary>
         public double Value
         {
@@ -51,7 +62,7 @@ namespace Elements
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Некорректно введена индуктивность катушки");
+                    throw new ArgumentException("Некорректно введено сопротивление резистора");
                 }
                 _value = value;
             }
@@ -60,15 +71,15 @@ namespace Elements
         #endregion
 
         #region методы класса
-        
+
         /// <summary>
-        /// Расчет комплексного сопротивления катушки индуктивности
+        /// Расчет комплексного сопротивления резистора
         /// </summary>
         /// <param name="frequency">Частота сигнала</param>
         /// <returns></returns>
         public Complex CalculateZ(double frequency)
         {
-            Complex resistance = new Complex(0, 2 * Math.PI * frequency * _value);
+            Complex resistance = new Complex(_value, 0);
             return resistance;
         }
 

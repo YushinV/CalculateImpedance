@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Numerics;
+using System.Collections.Generic;
 
 namespace Elements
 {
     /// <summary>
-    /// Класс конденсатора
+    /// Класс в котором хранятся компоненты соединенные последовательно
     /// </summary>
-    public class Capacitor : IElement
+    public class SerialCircuit : ICircuit
     {
         #region локальные переменные класса
 
         /// <summary>
-        /// Уникальное имя конденсатора 
+        /// Уникальное имя подсхемы
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// Емкость конденсатора
+        /// Значение подсхемы
         /// </summary>
         private double _value;
+
+        private List<IComponent> _components;
 
         #endregion
 
         #region свойства класса
         /// <summary>
-        /// Аксессор получения имени конденсатора
+        /// Аксессор получения имени подсхемы
         /// </summary>
         public string Name
         {
@@ -39,7 +42,7 @@ namespace Elements
         }
 
         /// <summary>
-        /// Аксессор получения емкости конденсатора
+        /// Аксессор получения значения
         /// </summary>
         public double Value
         {
@@ -57,20 +60,33 @@ namespace Elements
             }
         }
 
+        public List<IComponent> Components
+        {
+            get
+            {
+                return _components;
+            }
+            set
+            {
+                _components = value;
+            }
+        }
+
         #endregion
 
-        #region методы класса
-
+        Complex result = new Complex(0, 0);
         /// <summary>
-        /// Расчет комплексного сопротивления конденсатора
+        /// Расчет комплексного сопротивления при последовательном соединении компонентов
         /// </summary>
         /// <param name="frequency">Частота сигнала</param>
         /// <returns></returns>
         public Complex CalculateZ(double frequency)
         {
-            return new Complex(0, -1 / (2 * Math.PI * frequency * _value));
+            foreach (var comp in Components)
+            {
+                result += comp.CalculateZ(frequency);
+            }
+            return result;
         }
-
-        #endregion
     }
 }

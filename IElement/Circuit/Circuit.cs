@@ -12,7 +12,7 @@ namespace Elements
         /// <summary>
         /// Список элементов, состоящие в схеме
         /// </summary>
-        public List<IElement> Elements;
+        public List<IComponent> Elements;
 
         /// <summary>
         /// Расчет комплексного сопротивления цепи
@@ -26,7 +26,7 @@ namespace Elements
             {
                 for (int j = 0; j < Elements.Count; j++)
                 {
-                    arrayImpedance[i] = Elements[j].CalculateZ(frequency[i]);
+                    arrayImpedance[i] += Elements[j].CalculateZ(frequency[i]);
                 }
             }
             return arrayImpedance;

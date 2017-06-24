@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace Elements
 {
-    public interface IElement
+    public interface IComponent
     {
         /// <summary>
         /// Уникальное имя элемента
