@@ -42,37 +42,32 @@ namespace CircuitView
             Capacitor c3 = new Capacitor("C3", 300);
 
             ICircuit parallelCircuit1 = new ParallelCircuit();
-            parallelCircuit1.Components = new List<IComponent>();
 
             ICircuit parallelCircuit2 = new ParallelCircuit();
-            parallelCircuit2.Components = new List<IComponent>();
 
             ICircuit serialCircuit1 = new SerialCircuit();
-            serialCircuit1.Components = new List<IComponent>();
 
             ICircuit serialCircuit2 = new SerialCircuit();
-            serialCircuit2.Components = new List<IComponent>();
 
             ICircuit serialCircuit3 = new SerialCircuit();
-            serialCircuit3.Components = new List<IComponent>();
             
 
 
-            parallelCircuit1.Components.Add(c1);
-            parallelCircuit1.Components.Add(r1);
+            parallelCircuit1.AddComponent(c1);
+            parallelCircuit1.AddComponent(r1);
 
-            serialCircuit1.Components.Add(r2);
-            serialCircuit1.Components.Add(l1);
+            serialCircuit1.AddComponent(r2);
+            serialCircuit1.AddComponent(l1);
 
-            serialCircuit2.Components.Add(l2);
-            serialCircuit2.Components.Add(parallelCircuit1);
+            serialCircuit2.AddComponent(l2);
+            serialCircuit2.AddComponent(parallelCircuit1);
 
-            parallelCircuit2.Components.Add(c2);
-            parallelCircuit2.Components.Add(serialCircuit1);
-            parallelCircuit2.Components.Add(serialCircuit2);
+            parallelCircuit2.AddComponent(c2);
+            parallelCircuit2.AddComponent(serialCircuit1);
+            parallelCircuit2.AddComponent(serialCircuit2);
 
-            serialCircuit3.Components.Add(r2);
-            serialCircuit3.Components.Add(parallelCircuit2);
+            serialCircuit3.AddComponent(r2);
+            serialCircuit3.AddComponent(parallelCircuit2);
 
             double freguency = 50;
             Complex impedance = serialCircuit3.CalculateZ(freguency);

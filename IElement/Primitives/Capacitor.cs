@@ -1,13 +1,16 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Numerics;
+#endregion
 
 namespace Elements
 {
     /// <summary>
     /// Класс конденсатора
     /// </summary>
-    public class Capacitor : IComponent
+    public class Capacitor : IPrimitive
     {
+        #region конструкторы
         /// <summary>
         /// Конструктор конденсатора
         /// </summary>
@@ -18,6 +21,8 @@ namespace Elements
             Name = name;
             Value = value;
         }
+        #endregion
+
         #region локальные переменные класса
 
         /// <summary>

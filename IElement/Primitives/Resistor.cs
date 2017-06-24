@@ -1,13 +1,16 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Numerics;
+#endregion
 
 namespace Elements
 {
     /// <summary>
     /// Класс резистора
     /// </summary>
-    public class Resistor : IComponent
+    public class Resistor : IPrimitive
     {
+        #region конструкторы
         /// <summary>
         /// Конструктор резистора
         /// </summary>
@@ -18,6 +21,7 @@ namespace Elements
             Name = name;
             Value = value;
         }
+        #endregion
 
         #region локальные переменные класса
 
@@ -67,11 +71,9 @@ namespace Elements
                 _value = value;
             }
         }
-
         #endregion
 
         #region методы класса
-
         /// <summary>
         /// Расчет комплексного сопротивления резистора
         /// </summary>
@@ -82,7 +84,6 @@ namespace Elements
             Complex resistance = new Complex(_value, 0);
             return resistance;
         }
-
         #endregion
     }
 }

@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circuit\ParallelCircuit.cs" />
-    <Compile Include="Circuit\SerialCircuit.cs" />
+    <Compile Include="Circuits\ParallelCircuit.cs" />
+    <Compile Include="Circuits\SerialCircuit.cs" />
     <Compile Include="Primitives\Capacitor.cs" />
-    <Compile Include="Circuit\Circuit.cs" />
-    <Compile Include="Circuit\ICircuit.cs" />
+    <Compile Include="Circuits\ICircuit.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="Primitives\Inductor.cs" />
+    <Compile Include="Primitives\IPrimitive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Primitives\Resistor.cs" />
   </ItemGroup>

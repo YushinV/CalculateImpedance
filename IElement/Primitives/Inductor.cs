@@ -1,26 +1,29 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Numerics;
+#endregion
 
 namespace Elements
 {
     /// <summary>
     /// Класс катушки индуктивности
     /// </summary>
-    public class Inductor : IComponent
+    public class Inductor : IPrimitive
     {
+        #region конструкторы
         /// <summary>
-        /// Конструктор конденсатора
+        /// Конструктор катушки
         /// </summary>
-        /// <param name="name">уникальное имя конденсатора</param>
-        /// <param name="value">емкость конденсатора</param>
+        /// <param name="name">уникальное имя катушки</param>
+        /// <param name="value">индуктивность катушки</param>
         public Inductor(string name, double value)
         {
             Name = name;
             Value = value;
         }
+        #endregion
 
         #region локальные переменные класса
-
         /// <summary>
         /// Уникальное имя катушки 
         /// </summary>
@@ -30,7 +33,6 @@ namespace Elements
         /// Индуктивность катушки
         /// </summary>
         private double _value;
-
         #endregion
 
         #region свойства класса
@@ -71,7 +73,6 @@ namespace Elements
         #endregion
 
         #region методы класса
-        
         /// <summary>
         /// Расчет комплексного сопротивления катушки индуктивности
         /// </summary>
@@ -82,7 +83,6 @@ namespace Elements
             Complex resistance = new Complex(0, 2 * Math.PI * frequency * _value);
             return resistance;
         }
-
         #endregion
     }
 }
