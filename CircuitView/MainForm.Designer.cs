@@ -33,9 +33,22 @@
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxCircuit = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonCalculateZ = new System.Windows.Forms.Button();
+            this.textBoxImpedance = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxFrequency = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonChange = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -45,7 +58,7 @@
             this.правкаToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(684, 24);
+            this.menuStrip.Size = new System.Drawing.Size(783, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -63,47 +76,138 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(191, 27);
+            this.groupBox1.Location = new System.Drawing.Point(252, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 409);
+            this.groupBox1.Size = new System.Drawing.Size(519, 399);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Будущая отрисовка";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.comboBoxCircuit);
             this.groupBox2.Location = new System.Drawing.Point(12, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(173, 100);
+            this.groupBox2.Size = new System.Drawing.Size(234, 54);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Цепи";
+            this.groupBox2.Text = "Цепи:";
+            // 
+            // comboBoxCircuit
+            // 
+            this.comboBoxCircuit.FormattingEnabled = true;
+            this.comboBoxCircuit.Items.AddRange(new object[] {
+            "Схема 1",
+            "Схема 5"});
+            this.comboBoxCircuit.Location = new System.Drawing.Point(153, 19);
+            this.comboBoxCircuit.Name = "comboBoxCircuit";
+            this.comboBoxCircuit.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxCircuit.TabIndex = 0;
+            this.comboBoxCircuit.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
             // groupBox3
             // 
-            this.groupBox3.Location = new System.Drawing.Point(12, 133);
+            this.groupBox3.Controls.Add(this.buttonChange);
+            this.groupBox3.Controls.Add(this.dataGridView);
+            this.groupBox3.Location = new System.Drawing.Point(12, 87);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(173, 188);
+            this.groupBox3.Size = new System.Drawing.Size(234, 217);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Список элементов в схеме";
+            this.groupBox3.Text = "Список элементов в схеме:";
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 100;
+            this.dataGridView.Size = new System.Drawing.Size(222, 163);
+            this.dataGridView.TabIndex = 0;
             // 
             // groupBox4
             // 
-            this.groupBox4.Location = new System.Drawing.Point(12, 327);
+            this.groupBox4.Controls.Add(this.buttonCalculateZ);
+            this.groupBox4.Controls.Add(this.textBoxImpedance);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.textBoxFrequency);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Location = new System.Drawing.Point(12, 310);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(173, 109);
+            this.groupBox4.Size = new System.Drawing.Size(234, 109);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Импеданс цепи";
+            this.groupBox4.Text = "Импеданс цепи:";
+            // 
+            // buttonCalculateZ
+            // 
+            this.buttonCalculateZ.Location = new System.Drawing.Point(153, 79);
+            this.buttonCalculateZ.Name = "buttonCalculateZ";
+            this.buttonCalculateZ.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculateZ.TabIndex = 4;
+            this.buttonCalculateZ.Text = "Расcчитать";
+            this.buttonCalculateZ.UseVisualStyleBackColor = true;
+            // 
+            // textBoxImpedance
+            // 
+            this.textBoxImpedance.Location = new System.Drawing.Point(92, 45);
+            this.textBoxImpedance.Name = "textBoxImpedance";
+            this.textBoxImpedance.Size = new System.Drawing.Size(136, 20);
+            this.textBoxImpedance.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Импеданс:";
+            // 
+            // textBoxFrequency
+            // 
+            this.textBoxFrequency.Location = new System.Drawing.Point(173, 13);
+            this.textBoxFrequency.Name = "textBoxFrequency";
+            this.textBoxFrequency.Size = new System.Drawing.Size(55, 20);
+            this.textBoxFrequency.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Частота:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Цепь:";
+            // 
+            // buttonChange
+            // 
+            this.buttonChange.Location = new System.Drawing.Point(153, 188);
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.Size = new System.Drawing.Size(75, 23);
+            this.buttonChange.TabIndex = 1;
+            this.buttonChange.Text = "Изменить";
+            this.buttonChange.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 448);
+            this.ClientSize = new System.Drawing.Size(783, 431);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -114,6 +218,12 @@
             this.Text = "Impedance Calculator";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +238,15 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button buttonCalculateZ;
+        private System.Windows.Forms.TextBox textBoxImpedance;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxFrequency;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxCircuit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonChange;
     }
 }
 

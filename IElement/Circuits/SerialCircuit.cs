@@ -45,10 +45,40 @@ namespace Elements
             _components.Remove(component);
         }
 
+       
+
+        /// <summary>
+        /// Возвращает примитивы содержащиеся в схеме
+        /// </summary>
+        public List<IPrimitive> Primitives
+        {
+            get
+            {
+                List<IPrimitive> listPrimitive = new List<IPrimitive>();
+                foreach (var component in _components)
+                {
+                    if (component is IPrimitive)
+                    {
+                        listPrimitive.Add((IPrimitive)component);
+                    }
+                    if (component is ICircuit)
+                    {
+                        ICircuit circuit = (ICircuit)component;
+                        foreach (var comp in circuit.Primitives)
+                        {
+                            listPrimitive.Add(comp);
+                        }
+                    }
+                }
+
+                return listPrimitive;
+            }
+        }
+
         #endregion
 
         #region методы 
-        
+
         /// <summary>
         /// Расчет комплексного сопротивления при последовательном соединении компонентов
         /// </summary>

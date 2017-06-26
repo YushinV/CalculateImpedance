@@ -9,7 +9,7 @@ namespace Elements
     /// </summary>
     public interface ICircuit: IComponent
     {
-        #region Свойства
+        #region методы
     
         /// <summary>
         /// Добавление компонента
@@ -23,7 +23,20 @@ namespace Elements
         /// <param name="component"></param>
         void RemoveComponent(IComponent component);
 
+
+
         #endregion
+
+        #region свойства
+
+        /// <summary>
+        /// Свойство возвращающее примитивы схемы
+        /// </summary>
+        List<IPrimitive> Primitives { get; }
+        #endregion
+
+
+
     }   
 
 }
