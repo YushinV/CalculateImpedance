@@ -75,6 +75,12 @@ namespace Elements
             }
         }
 
+        public void InsertComponent(IPrimitive replacedComponent, int index)
+        {
+            _components.RemoveAt(index);
+            _components.Insert(index, replacedComponent);
+        }
+
         #endregion
 
         #region методы 

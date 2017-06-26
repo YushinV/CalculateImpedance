@@ -90,5 +90,11 @@ namespace Elements
             return 1 / _resultCalculationZ;
         }
         #endregion
+
+        public void InsertComponent(IPrimitive replacedComponent, int index)
+        { 
+            _components.RemoveAt(index);
+            _components.Insert(index, replacedComponent);
+        }
     }
 }

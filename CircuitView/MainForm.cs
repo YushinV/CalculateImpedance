@@ -15,6 +15,7 @@ namespace CircuitView
     public partial class MainForm : Form
     {
         private double _freguency;
+        
 
         private int _indexComboBox;
         public MainForm()
@@ -22,26 +23,26 @@ namespace CircuitView
             
             InitializeComponent();
             
-            #region таблица компонентов
+
+            /*#region таблица компонентов
             var column1 = new DataGridViewColumn();
             column1.HeaderText = "Элементы";
             column1.CellTemplate = new DataGridViewTextBoxCell();
             var column2 = new DataGridViewColumn();
             column2.HeaderText = "Номинал";
             column2.CellTemplate = new DataGridViewTextBoxCell();
-            
+
             dataGridView.Columns.Add(column1);
             dataGridView.Columns.Add(column2);
             dataGridView.RowCount = 1;
-            #endregion
+            #endregion*/
 
             double freguency = 50;
             textBoxFrequency.Text = freguency.ToString();
-            //textBoxImpedance.Text = serialCircuit3.CalculateZ(freguency).ToString();
             
         }
 
-        private ICircuit GetCircuit(int index)
+        private ICircuit getCircuit(int index)
         {
             if (index == 1)
             {
@@ -127,16 +128,25 @@ namespace CircuitView
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             dataGridView.Rows.Clear();
-            ICircuit circuit = GetCircuit(comboBoxCircuit.SelectedIndex);
-            foreach (var c in circuit.Primitives)
-            {
-                dataGridView.Rows.Add(c.Name, c.Value);
+            ICircuit circuit = getCircuit(comboBoxCircuit.SelectedIndex);
+            //foreach (var c in circuit.Primitives)
+            //{
+            //    dataGridView.Rows.Add(c.Name, c.Value);
 
-            }
+            //}
+            iPrimitiveBindingSource.DataSource = circuit.Primitives;
             _freguency = Convert.ToInt32(textBoxFrequency.Text);
             textBoxImpedance.Text = Convert.ToString(circuit.CalculateZ(_freguency));
         }
 
-       
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            IPrimitive primitive = (IPrimitive)iPrimitiveBindingSource.Current;
+            int index = iPrimitiveBindingSource.IndexOf(primitive);
+            Resistor r1 = new Resistor("RN", 1234);
+            ICircuit circuit = getCircuit(comboBoxCircuit.SelectedIndex);
+            circuit.InsertComponent(r1, index);
+            iPrimitiveBindingSource.DataSource = circuit.Primitives;
+        }
     }
 }

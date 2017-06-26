@@ -23,6 +23,13 @@ namespace Elements
         /// <param name="component"></param>
         void RemoveComponent(IComponent component);
 
+        /// <summary>
+        /// Метод для изменения компонента цепи
+        /// </summary>
+        /// <param name="replacedComponent"></param>
+        /// <param name="index"></param>
+        void InsertComponent(IPrimitive replacedComponent, int index);
+
 
 
         #endregion
