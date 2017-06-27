@@ -14,56 +14,125 @@ namespace CircuitView
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Переменная с частотой
+        /// </summary>
         private double _freguency;
+
+        /// <summary>
+        /// Переменная со схемой
+        /// </summary>
+        private ICircuit _circuit;
         
 
         private int _indexComboBox;
         public MainForm()
         {
-            
             InitializeComponent();
-            
-
-            /*#region таблица компонентов
-            var column1 = new DataGridViewColumn();
-            column1.HeaderText = "Элементы";
-            column1.CellTemplate = new DataGridViewTextBoxCell();
-            var column2 = new DataGridViewColumn();
-            column2.HeaderText = "Номинал";
-            column2.CellTemplate = new DataGridViewTextBoxCell();
-
-            dataGridView.Columns.Add(column1);
-            dataGridView.Columns.Add(column2);
-            dataGridView.RowCount = 1;
-            #endregion*/
-
             double freguency = 50;
             textBoxFrequency.Text = freguency.ToString();
-            
         }
 
+        /// <summary>
+        /// Метод возвращающий схемы
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private ICircuit getCircuit(int index)
         {
             if (index == 0)
             {
                 #region Схема 1
-
                 Resistor r4 = new Resistor("R1", 100);
                 Inductor l4 = new Inductor("L1", 100);
                 Capacitor c4 = new Capacitor("C1", 100);
-                List<IPrimitive> circuitComponents1 = new List<IPrimitive>();
-                circuitComponents1.Add(r4);
-                circuitComponents1.Add(l4);
-                circuitComponents1.Add(c4);
-
-                ParallelCircuit parallelCircuit4 = new ParallelCircuit();
-                parallelCircuit4.AddComponent(l4);
-                parallelCircuit4.AddComponent(c4);
+                
+                ParallelCircuit parallelCircuit1 = new ParallelCircuit();
+                parallelCircuit1.AddComponent(l4);
+                parallelCircuit1.AddComponent(c4);
 
                 SerialCircuit serialCircuit4 = new SerialCircuit();
                 serialCircuit4.AddComponent(r4);
-                serialCircuit4.AddComponent(parallelCircuit4);
+                serialCircuit4.AddComponent(parallelCircuit1);
                 return serialCircuit4;
+
+                #endregion
+            }
+            if (index == 1)
+            {
+                #region Схема 2
+                Inductor l1 = new Inductor("L1", 100);
+                Resistor r1 = new Resistor("R1", 100);
+                Capacitor c1 = new Capacitor("C1", 100);
+
+                SerialCircuit serialCircuit = new SerialCircuit();
+                ParallelCircuit parallelCircuit = new ParallelCircuit();
+
+                parallelCircuit.AddComponent(r1);
+                parallelCircuit.AddComponent(c1);
+
+                serialCircuit.AddComponent(l1);
+                serialCircuit.AddComponent(parallelCircuit);
+
+                return serialCircuit;
+                #endregion
+            }
+            if (index == 2)
+            {
+                #region Схема 3
+                Inductor l1 = new Inductor("L1", 100);
+                Inductor l2 = new Inductor("L2", 100);
+                Inductor l3 = new Inductor("l3", 100);
+                Capacitor c1 = new Capacitor("C1", 100);
+                Resistor r1 = new Resistor("R1", 100);
+
+                ParallelCircuit parallelCircuit1 = new ParallelCircuit();
+                ParallelCircuit parallelCircuit2 = new ParallelCircuit();
+                SerialCircuit serialCircuit = new SerialCircuit();
+
+                parallelCircuit1.AddComponent(c1);
+                parallelCircuit1.AddComponent(l1);
+                parallelCircuit2.AddComponent(l2);
+                parallelCircuit2.AddComponent(r1);
+
+                serialCircuit.AddComponent(parallelCircuit1);
+                serialCircuit.AddComponent(parallelCircuit2);
+                serialCircuit.AddComponent(l3);
+
+                return serialCircuit;
+
+                #endregion
+            }
+            if (index == 3)
+            {
+                #region Схема 4
+                Capacitor c1 = new Capacitor("C1", 100);
+                Resistor r1 = new Resistor("R1", 100);
+                Inductor l1 = new Inductor("L1", 100);
+                Inductor l2 = new Inductor("L1", 100);
+                Resistor r2 = new Resistor("R2", 100);
+                Capacitor c2 = new Capacitor("C2", 100);
+
+                ICircuit parallelCircuit1 = new ParallelCircuit();
+                ICircuit serialCircuit1 = new SerialCircuit();
+                ICircuit parallelCircuit2 = new ParallelCircuit();
+                ICircuit serialCircuit2 = new SerialCircuit();
+                ICircuit parallelCircuit3 = new ParallelCircuit();
+
+                parallelCircuit1.AddComponent(r1);
+                parallelCircuit1.AddComponent(l1);
+                serialCircuit1.AddComponent(parallelCircuit1);
+                serialCircuit1.AddComponent(c1);
+
+                parallelCircuit2.AddComponent(l2);
+                parallelCircuit2.AddComponent(r2);
+                serialCircuit2.AddComponent(parallelCircuit2);
+                serialCircuit2.AddComponent(c2);
+                
+                parallelCircuit3.AddComponent(serialCircuit1);
+                parallelCircuit3.AddComponent(serialCircuit2);
+
+                return parallelCircuit3;
 
                 #endregion
             }
@@ -81,16 +150,7 @@ namespace CircuitView
                 Capacitor c1 = new Capacitor("C1", 100);
                 Capacitor c2 = new Capacitor("C2", 200);
                 Capacitor c3 = new Capacitor("C3", 300);
-
-                List<IPrimitive> circuitComponents5 = new List<IPrimitive>();
-                circuitComponents5.Add(r1);
-                circuitComponents5.Add(r2);
-                circuitComponents5.Add(l1);
-                circuitComponents5.Add(l2);
-                circuitComponents5.Add(c1);
-                circuitComponents5.Add(c2);
-                circuitComponents5.Add(r3);
-
+                
                 ICircuit parallelCircuit1 = new ParallelCircuit();
 
                 ICircuit parallelCircuit2 = new ParallelCircuit();
@@ -121,34 +181,40 @@ namespace CircuitView
                 #endregion
             }
         }
-
         
-
-
-        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        /// <summary>
+        /// Комбобокс выбора схемы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBoxCircuit_SelectionChangeCommitted(object sender, EventArgs e)
         {
             dataGridView.Rows.Clear();
-            ICircuit circuit = getCircuit(comboBoxCircuit.SelectedIndex);
-            //foreach (var c in circuit.Primitives)
-            //{
-            //    dataGridView.Rows.Add(c.Name, c.Value);
-
-            //}
-            iPrimitiveBindingSource.DataSource = circuit.Primitives;
+            _circuit = getCircuit(comboBoxCircuit.SelectedIndex);
+            iPrimitiveBindingSource.DataSource = _circuit.Primitives;
             _freguency = Convert.ToInt32(textBoxFrequency.Text);
-            textBoxImpedance.Text = Convert.ToString(circuit.CalculateZ(_freguency));
+            textBoxImpedance.Text = Convert.ToString(_circuit.CalculateZ(_freguency));
         }
 
+        /// <summary>
+        /// Кнопка изменения компонента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            IPrimitive primitive = (IPrimitive)iPrimitiveBindingSource.Current;
-            int index = iPrimitiveBindingSource.IndexOf(primitive);
-            Resistor r1 = new Resistor("RN", 1234);
-            ICircuit circuit = getCircuit(comboBoxCircuit.SelectedIndex);
-            circuit.InsertComponent(primitive, r1);
-            iPrimitiveBindingSource.DataSource = circuit.Primitives;
-            _freguency = Convert.ToInt32(textBoxFrequency.Text);
-            textBoxImpedance.Text = Convert.ToString(circuit.CalculateZ(_freguency));
+            var changeForm = new ChangeForm();
+            IPrimitive oldPrimitive = (IPrimitive)iPrimitiveBindingSource.Current;
+            changeForm.Primitive = oldPrimitive;
+            if (changeForm.ShowDialog() == DialogResult.OK)
+            {
+                IPrimitive primitive = changeForm.Primitive;
+                _circuit.InsertComponent(oldPrimitive, primitive);
+                iPrimitiveBindingSource.DataSource = _circuit.Primitives;
+
+                _freguency = Convert.ToInt32(textBoxFrequency.Text);
+                textBoxImpedance.Text = Convert.ToString(_circuit.CalculateZ(_freguency));
+            }
         }
     }
 }

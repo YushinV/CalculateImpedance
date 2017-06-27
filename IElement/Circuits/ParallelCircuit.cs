@@ -83,6 +83,7 @@ namespace Elements
         /// <returns></returns>
         public Complex CalculateZ(double frequency)
         {
+            _resultCalculationZ = new Complex(0, 0);
             foreach (var comp in _components)
             {
                 _resultCalculationZ += 1 / comp.CalculateZ(frequency);

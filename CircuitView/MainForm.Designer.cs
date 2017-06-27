@@ -39,21 +39,20 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonChange = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iPrimitiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonCalculateZ = new System.Windows.Forms.Button();
             this.textBoxImpedance = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxFrequency = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.iPrimitiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iPrimitiveBindingSource)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -116,12 +115,15 @@
             this.comboBoxCircuit.FormattingEnabled = true;
             this.comboBoxCircuit.Items.AddRange(new object[] {
             "Схема 1",
+            "Схема 2",
+            "Схема 3",
+            "Схема 4",
             "Схема 5"});
             this.comboBoxCircuit.Location = new System.Drawing.Point(153, 19);
             this.comboBoxCircuit.Name = "comboBoxCircuit";
             this.comboBoxCircuit.Size = new System.Drawing.Size(75, 21);
             this.comboBoxCircuit.TabIndex = 0;
-            this.comboBoxCircuit.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            this.comboBoxCircuit.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCircuit_SelectionChangeCommitted);
             // 
             // groupBox3
             // 
@@ -159,9 +161,24 @@
             this.dataGridView.Size = new System.Drawing.Size(222, 163);
             this.dataGridView.TabIndex = 0;
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // valueDataGridViewTextBoxColumn
+            // 
+            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+            this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
+            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
+            // 
+            // iPrimitiveBindingSource
+            // 
+            this.iPrimitiveBindingSource.DataSource = typeof(Elements.IPrimitive);
+            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.buttonCalculateZ);
             this.groupBox4.Controls.Add(this.textBoxImpedance);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.textBoxFrequency);
@@ -173,19 +190,11 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Импеданс цепи:";
             // 
-            // buttonCalculateZ
-            // 
-            this.buttonCalculateZ.Location = new System.Drawing.Point(153, 79);
-            this.buttonCalculateZ.Name = "buttonCalculateZ";
-            this.buttonCalculateZ.Size = new System.Drawing.Size(75, 23);
-            this.buttonCalculateZ.TabIndex = 4;
-            this.buttonCalculateZ.Text = "Расcчитать";
-            this.buttonCalculateZ.UseVisualStyleBackColor = true;
-            // 
             // textBoxImpedance
             // 
             this.textBoxImpedance.Location = new System.Drawing.Point(92, 45);
             this.textBoxImpedance.Name = "textBoxImpedance";
+            this.textBoxImpedance.ReadOnly = true;
             this.textBoxImpedance.Size = new System.Drawing.Size(136, 20);
             this.textBoxImpedance.TabIndex = 3;
             // 
@@ -214,22 +223,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Частота:";
             // 
-            // iPrimitiveBindingSource
-            // 
-            this.iPrimitiveBindingSource.DataSource = typeof(Elements.IPrimitive);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // valueDataGridViewTextBoxColumn
-            // 
-            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
-            this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
-            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,9 +242,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iPrimitiveBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iPrimitiveBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +260,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button buttonCalculateZ;
         private System.Windows.Forms.TextBox textBoxImpedance;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxFrequency;
