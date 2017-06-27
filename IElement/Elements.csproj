@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Circuits\ParallelCircuit.cs" />
+    <Compile Include="Primitives\PrimitiveType.cs" />
     <Compile Include="Circuits\SerialCircuit.cs" />
     <Compile Include="Primitives\Capacitor.cs" />
     <Compile Include="Circuits\ICircuit.cs" />

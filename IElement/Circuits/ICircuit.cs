@@ -9,8 +9,18 @@ namespace Elements
     /// </summary>
     public interface ICircuit: IComponent
     {
+        #region свойства
+
+        /// <summary>
+        /// Свойство возвращающее примитивы схемы
+        /// </summary>
+        List<IPrimitive> Primitives { get; }
+
+
+        #endregion
+
         #region методы
-    
+
         /// <summary>
         /// Добавление компонента
         /// </summary>
@@ -26,24 +36,11 @@ namespace Elements
         /// <summary>
         /// Метод для изменения компонента цепи
         /// </summary>
-        /// <param name="replacedComponent"></param>
-        /// <param name="index"></param>
-        void InsertComponent(IPrimitive replacedComponent, int index);
-
-
+        /// <param name="oldComponent">элемент который нужно заменить</param>
+        /// <param name="newComponent">элмент на который заменяют</param>
+        void InsertComponent(IPrimitive oldComponent, IPrimitive newComponent);
 
         #endregion
-
-        #region свойства
-
-        /// <summary>
-        /// Свойство возвращающее примитивы схемы
-        /// </summary>
-        List<IPrimitive> Primitives { get; }
-        #endregion
-
-
-
-    }   
+    }
 
 }

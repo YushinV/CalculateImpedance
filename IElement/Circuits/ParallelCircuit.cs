@@ -16,7 +16,7 @@ namespace Elements
         /// <summary>
         /// Список для хранения элементов схемы
         /// </summary>
-        private List<IComponent> _components = new List<IComponent>();
+        protected internal List<IComponent> _components = new List<IComponent>();
 
         /// <summary>
         /// Переменная для хранения резальтата расчета комплексного сопротивления
@@ -91,10 +91,32 @@ namespace Elements
         }
         #endregion
 
-        public void InsertComponent(IPrimitive replacedComponent, int index)
-        { 
-            _components.RemoveAt(index);
-            _components.Insert(index, replacedComponent);
+        /// <summary>
+        /// Метод для изменения компонента цепи
+        /// </summary>
+        /// <param name="oldComponent">элемент который нужно заменить</param>
+        /// <param name="newComponent">элмент на который заменяют</param>
+        public void InsertComponent(IPrimitive oldComponent, IPrimitive newComponent)
+        {
+            foreach (var component in _components)
+            {
+                if (component is IPrimitive)
+                {
+                    IPrimitive prim = (IPrimitive)component;
+                    if (prim.Name == oldComponent.Name)
+                    {
+                        int index = _components.IndexOf(component);
+                        _components.RemoveAt(index);
+                        _components.Insert(index, newComponent);
+                        break;
+                    }
+                }
+                if (component is ICircuit)
+                {
+                    ICircuit prim = (ICircuit)component;
+                    prim.InsertComponent(oldComponent, newComponent);
+                }
+            }
         }
     }
 }

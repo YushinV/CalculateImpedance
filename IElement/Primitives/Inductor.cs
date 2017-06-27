@@ -36,6 +36,18 @@ namespace Elements
         #endregion
 
         #region свойства класса
+
+        /// <summary>
+        /// Аксессор получения типа компонента
+        /// </summary>
+        public PrimitiveType PrimitiveType
+        {
+            get
+            {
+                return PrimitiveType.Inductor;
+            }
+        }
+
         /// <summary>
         /// Аксессор получения имени катушки
         /// </summary>

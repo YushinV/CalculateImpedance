@@ -44,7 +44,7 @@ namespace CircuitView
 
         private ICircuit getCircuit(int index)
         {
-            if (index == 1)
+            if (index == 0)
             {
                 #region Схема 1
 
@@ -145,8 +145,10 @@ namespace CircuitView
             int index = iPrimitiveBindingSource.IndexOf(primitive);
             Resistor r1 = new Resistor("RN", 1234);
             ICircuit circuit = getCircuit(comboBoxCircuit.SelectedIndex);
-            circuit.InsertComponent(r1, index);
+            circuit.InsertComponent(primitive, r1);
             iPrimitiveBindingSource.DataSource = circuit.Primitives;
+            _freguency = Convert.ToInt32(textBoxFrequency.Text);
+            textBoxImpedance.Text = Convert.ToString(circuit.CalculateZ(_freguency));
         }
     }
 }
