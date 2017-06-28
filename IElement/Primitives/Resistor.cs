@@ -1,6 +1,7 @@
 ﻿#region using
 using System;
 using System.Numerics;
+using System.Drawing;
 #endregion
 
 namespace Elements
@@ -34,6 +35,9 @@ namespace Elements
         /// Сопротивление резистора
         /// </summary>
         private double _value;
+
+        private Image _image = Image.FromFile(@"C:\Users\akun9\Documents\Visual Studio 2017\" + 
+            @"Projects\IElement\IElement\Primitives\Image\Resistor.bmp");
 
         #endregion
 
@@ -83,6 +87,15 @@ namespace Elements
                 _value = value;
             }
         }
+
+        public Image Image
+        {
+            get
+            {
+                return _image;
+            }
+        }
+
         #endregion
 
         #region методы класса

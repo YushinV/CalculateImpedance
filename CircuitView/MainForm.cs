@@ -31,6 +31,7 @@ namespace CircuitView
             InitializeComponent();
             double freguency = 50;
             textBoxFrequency.Text = freguency.ToString();
+            drawControl1.SetCircuit = getCircuit(0);
         }
 
         /// <summary>
@@ -87,16 +88,16 @@ namespace CircuitView
                 Resistor r1 = new Resistor("R1", 100);
 
                 ParallelCircuit parallelCircuit1 = new ParallelCircuit();
-                ParallelCircuit parallelCircuit2 = new ParallelCircuit();
+                //ParallelCircuit parallelCircuit2 = new ParallelCircuit();
                 SerialCircuit serialCircuit = new SerialCircuit();
 
                 parallelCircuit1.AddComponent(c1);
                 parallelCircuit1.AddComponent(l1);
-                parallelCircuit2.AddComponent(l2);
-                parallelCircuit2.AddComponent(r1);
+                //parallelCircuit2.AddComponent(l2);
+                //parallelCircuit2.AddComponent(r1);
 
                 serialCircuit.AddComponent(parallelCircuit1);
-                serialCircuit.AddComponent(parallelCircuit2);
+                //serialCircuit.AddComponent(parallelCircuit2);
                 serialCircuit.AddComponent(l3);
 
                 return serialCircuit;
@@ -136,7 +137,7 @@ namespace CircuitView
 
                 #endregion
             }
-            else
+            if(index == 4)
             {
                 #region Схема 5
                 Resistor r1 = new Resistor("R1", 100);
@@ -180,6 +181,38 @@ namespace CircuitView
 
                 #endregion
             }
+            if(index == 5)
+            {
+                #region чисто параллельное соединение
+                Resistor r4 = new Resistor("R1", 100);
+                Inductor l4 = new Inductor("L1", 100);
+                Capacitor c4 = new Capacitor("C1", 100);
+                Inductor l5 = new Inductor("L2", 100);
+
+
+                ParallelCircuit parallelCircuit = new ParallelCircuit();
+                parallelCircuit.AddComponent(r4);
+                parallelCircuit.AddComponent(l4);
+                parallelCircuit.AddComponent(c4);
+                parallelCircuit.AddComponent(l5);
+
+                return parallelCircuit;
+                #endregion
+            }
+            else
+            {
+                #region Чисто последовательное соедниение
+                Resistor r4 = new Resistor("R1", 100);
+                Inductor l4 = new Inductor("L1", 100);
+                Capacitor c4 = new Capacitor("C1", 100);
+                SerialCircuit serialCircuit = new SerialCircuit();
+                serialCircuit.AddComponent(r4);
+                serialCircuit.AddComponent(l4);
+                serialCircuit.AddComponent(c4);
+                return serialCircuit;
+                #endregion
+            }
+            
         }
         
         /// <summary>

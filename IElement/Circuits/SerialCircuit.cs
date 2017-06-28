@@ -106,6 +106,18 @@ namespace Elements
             }
         }
 
+        public List<IComponent> Components
+        {
+            get
+            {
+                return _components;
+            }
+            set
+            {
+                _components = value;
+            }
+        }
+
         #endregion
 
         #region методы 

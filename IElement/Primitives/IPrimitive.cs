@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace Elements
 {
@@ -23,6 +24,8 @@ namespace Elements
         /// Численное значение элемента
         /// </summary>
         double Value { get; set; }
+
+        Image Image { get; }
         #endregion
     }
 }

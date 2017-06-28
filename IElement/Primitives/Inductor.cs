@@ -1,6 +1,7 @@
 ﻿#region using
 using System;
 using System.Numerics;
+using System.Drawing;
 #endregion
 
 namespace Elements
@@ -33,6 +34,9 @@ namespace Elements
         /// Индуктивность катушки
         /// </summary>
         private double _value;
+
+        private  Image _image = Image.FromFile(@"C:\Users\akun9\Documents\Visual Studio 2017\"+
+            @"Projects\IElement\IElement\Primitives\Image\Inductor.bmp");
         #endregion
 
         #region свойства класса
@@ -79,6 +83,14 @@ namespace Elements
                     throw new ArgumentException("Некорректно введена индуктивность катушки");
                 }
                 _value = value;
+            }
+        }
+
+        public Image Image
+        {
+            get
+            {
+                return _image;
             }
         }
 

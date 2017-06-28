@@ -16,6 +16,7 @@ namespace Elements
         /// </summary>
         List<IPrimitive> Primitives { get; }
 
+        List<IComponent> Components { get; set; }
 
         #endregion
 

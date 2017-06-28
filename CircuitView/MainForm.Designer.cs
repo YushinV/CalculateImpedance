@@ -33,6 +33,7 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.drawControl1 = new CircuitView.Controls.DrawControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxCircuit = new System.Windows.Forms.ComboBox();
@@ -48,6 +49,7 @@
             this.textBoxFrequency = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -83,12 +85,21 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.drawControl1);
             this.groupBox1.Location = new System.Drawing.Point(252, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(519, 399);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Будущая отрисовка";
+            // 
+            // drawControl1
+            // 
+            this.drawControl1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.drawControl1.Location = new System.Drawing.Point(6, 19);
+            this.drawControl1.Name = "drawControl1";
+            this.drawControl1.Size = new System.Drawing.Size(507, 373);
+            this.drawControl1.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -238,6 +249,7 @@
             this.Text = "Impedance Calculator";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -270,6 +282,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource iPrimitiveBindingSource;
+        private Controls.DrawControl drawControl1;
     }
 }
 
