@@ -103,21 +103,20 @@ namespace CircuitView.Controls
             
             if (circuit is ParallelCircuit)
             {
-                y1 -= 25;
+                int y2 = y1;
                 int countComponent = circuit.Components.Count;
 
                 e.Graphics.DrawLine(blackPen,
-                    new Point(x1-1,  y1 + 25), 
-                    new Point(x1-1,  y1 + (w * countComponent) - 25));
-                
+                    new Point(x1 - 1, y2),
+                    new Point(x1 - 1, y2 + (w * countComponent) - 50));
 
                 foreach (var component in circuit.Components)
                 {
                     if (component is IPrimitive)
                     {
                         IPrimitive primitive = (IPrimitive)component;
-                        e.Graphics.DrawImage(primitive.Image, x1, y1);
-                        y1 += 52;
+                        e.Graphics.DrawImage(primitive.Image, x1, y2-25);
+                        y2 += 52;
                     }
                     if (component is ICircuit)
                     {
@@ -125,10 +124,14 @@ namespace CircuitView.Controls
                         CircuitDraw(cir, e);
                         x1 += w;
                     }
+                    
                 }
                 e.Graphics.DrawLine(blackPen,
-                    new Point(x1 + w - 1, y1 - 25),
-                    new Point(x1 + w - 1, y1 - (w * countComponent) + 25));
+                    new Point(x1 + w - 1, y2 - w * countComponent),
+                    new Point(x1 + w - 1, y2 - (w * countComponent) + 52));
+                //e.Graphics.DrawLine(blackPen,
+                //    new Point(x1 + w - 1, y1 - 25),
+                //    new Point(x1 + w - 1, y1 - (w * countComponent) + 25));
             }
         }
     }

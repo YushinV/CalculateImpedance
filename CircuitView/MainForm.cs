@@ -40,7 +40,7 @@ namespace CircuitView
             InitializeComponent();
             double freguency = 50;
             textBoxFrequency.Text = freguency.ToString();
-            drawControl1.SetCircuit = getCircuit(2);
+            drawControl1.SetCircuit = getCircuit(5);
         }
         #endregion
 
