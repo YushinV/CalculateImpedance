@@ -15,6 +15,8 @@ namespace CircuitView
 {
     public partial class ChangeForm : Form
     {
+		// TODO: не везде XML-комментарии
+
         private IPrimitive _primitive;
 
         public ChangeForm()

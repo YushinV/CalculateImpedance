@@ -9,6 +9,9 @@ namespace Elements
     /// </summary>
     public interface ICircuit: IComponent
     {
+		// TODO: XML-комментарии не везде параментр описан
+		// AddComponent и RemoveComponent
+
         #region свойства
 
         /// <summary>

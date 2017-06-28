@@ -11,13 +11,16 @@ namespace Elements
     /// </summary>
     public class Inductor : IPrimitive
     {
-        #region конструкторы
-        /// <summary>
-        /// Конструктор катушки
-        /// </summary>
-        /// <param name="name">уникальное имя катушки</param>
-        /// <param name="value">индуктивность катушки</param>
-        public Inductor(string name, double value)
+		// TODO: Свойства в которых только get можно через лямбда-выражения писать
+		// так кода по меньше получатся(ReSharper сам их сделает) 
+
+		#region конструкторы
+		/// <summary>
+		/// Конструктор катушки
+		/// </summary>
+		/// <param name="name">уникальное имя катушки</param>
+		/// <param name="value">индуктивность катушки</param>
+		public Inductor(string name, double value)
         {
             Name = name;
             Value = value;

@@ -12,13 +12,15 @@ namespace Elements
     /// </summary>
     public class Capacitor : IPrimitive
     {
-        #region конструкторы
-        /// <summary>
-        /// Конструктор конденсатора
-        /// </summary>
-        /// <param name="name">уникальное имя конденсатора</param>
-        /// <param name="value">емкость конденсатора</param>
-        public Capacitor(string name, double value)
+		// TODO: Свойства в которых только get можно через лямбда-выражения писать
+		// так кода по меньше получатся(ReSharper сам их сделает) 
+		#region конструкторы
+		/// <summary>
+		/// Конструктор конденсатора
+		/// </summary>
+		/// <param name="name">уникальное имя конденсатора</param>
+		/// <param name="value">емкость конденсатора</param>
+		public Capacitor(string name, double value)
         {
             Name = name;
             Value = value;

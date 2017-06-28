@@ -10,13 +10,16 @@ namespace Elements
     /// Класс в котором хранятся компоненты соединенные параллельно
     /// </summary>
     public class ParallelCircuit : ICircuit
-    {
-        #region локальные переменные класса
+	{
+		// TODO: XML-комментарии не везде параментр описан
+		// AddComponent и RemoveComponent
 
-        /// <summary>
-        /// Список для хранения элементов схемы
-        /// </summary>
-        protected internal List<IComponent> _components = new List<IComponent>();
+		#region локальные переменные класса
+
+		/// <summary>
+		/// Список для хранения элементов схемы
+		/// </summary>
+		protected internal List<IComponent> _components = new List<IComponent>();
 
         /// <summary>
         /// Переменная для хранения резальтата расчета комплексного сопротивления

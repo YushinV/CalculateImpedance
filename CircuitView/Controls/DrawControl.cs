@@ -18,10 +18,12 @@ namespace CircuitView.Controls
     /// </summary>
     public partial class DrawControl : UserControl
     {
-        /// <summary>
-        /// переменная для схемы
-        /// </summary>
-        private ICircuit _circuit;
+		// TODO: Думаю стоит убрать описание параметров для sender и e
+
+		/// <summary>
+		/// переменная для схемы
+		/// </summary>
+		private ICircuit _circuit;
 
         /// <summary>
         /// коордиаты начала отрисовки

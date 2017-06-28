@@ -19,6 +19,9 @@ namespace CircuitView
     /// </summary>
     public partial class MainForm : Form
     {
+		// TODO: В некоторых XML-комментариях нет подписи к параметрам
+		// TODO: Думаю стоит убрать описание параметров для sender и e
+
         #region локальные переменные
         /// <summary>
         /// Переменная с частотой
