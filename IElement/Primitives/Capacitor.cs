@@ -37,6 +37,9 @@ namespace Elements
         /// </summary>
         private double _value;
 
+        /// <summary>
+        /// Изображение конденсатора
+        /// </summary>
         private Image _image = Image.FromFile(@"C:\Users\akun9\Documents\Visual Studio 2017\" + 
             @"Projects\IElement\IElement\Primitives\Image\Capacitor.bmp");
 
@@ -89,6 +92,9 @@ namespace Elements
             }
         }
 
+        /// <summary>
+        /// Получение рисунка
+        /// </summary>
         public Image Image
         {
             get
@@ -96,9 +102,7 @@ namespace Elements
                 return _image;
             }
         }
-
         
-
         #endregion
 
         #region методы класса

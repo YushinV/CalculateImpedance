@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿#region using
+using System.Collections.Generic;
 using System.Drawing;
+#endregion
 
 namespace Elements
 {
@@ -25,6 +27,9 @@ namespace Elements
         /// </summary>
         double Value { get; set; }
 
+        /// <summary>
+        /// Получение рисунка
+        /// </summary>
         Image Image { get; }
         #endregion
     }

@@ -72,6 +72,9 @@ namespace Elements
             }
         }
 
+        /// <summary>
+        /// Возвращает коллекцию с компонентами
+        /// </summary>
         public List<IComponent> Components
         {
             get
@@ -101,7 +104,7 @@ namespace Elements
             }
             return 1 / _resultCalculationZ;
         }
-        #endregion
+        
 
         /// <summary>
         /// Метод для изменения компонента цепи
@@ -130,5 +133,6 @@ namespace Elements
                 }
             }
         }
+        #endregion
     }
 }

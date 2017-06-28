@@ -35,6 +35,9 @@ namespace Elements
         /// </summary>
         private double _value;
 
+        /// <summary>
+        /// Изображение катушки
+        /// </summary>
         private  Image _image = Image.FromFile(@"C:\Users\akun9\Documents\Visual Studio 2017\"+
             @"Projects\IElement\IElement\Primitives\Image\Inductor.bmp");
         #endregion
@@ -86,6 +89,9 @@ namespace Elements
             }
         }
 
+        /// <summary>
+        /// Получение рисунка
+        /// </summary>
         public Image Image
         {
             get

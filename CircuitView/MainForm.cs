@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Elements;
 using System.Numerics;
+#endregion
 
 namespace CircuitView
 {
+    /// <summary>
+    /// Главная форма
+    /// </summary>
     public partial class MainForm : Form
     {
+        #region локальные переменные
         /// <summary>
         /// Переменная с частотой
         /// </summary>
@@ -23,16 +29,22 @@ namespace CircuitView
         /// Переменная со схемой
         /// </summary>
         private ICircuit _circuit;
-        
+        #endregion
 
-        private int _indexComboBox;
+        #region конструкторы
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
             double freguency = 50;
             textBoxFrequency.Text = freguency.ToString();
-            drawControl1.SetCircuit = getCircuit(0);
+            drawControl1.SetCircuit = getCircuit(2);
         }
+        #endregion
+
+        #region методы и обработчики событий
 
         /// <summary>
         /// Метод возвращающий схемы
@@ -88,17 +100,17 @@ namespace CircuitView
                 Resistor r1 = new Resistor("R1", 100);
 
                 ParallelCircuit parallelCircuit1 = new ParallelCircuit();
-                //ParallelCircuit parallelCircuit2 = new ParallelCircuit();
+                ParallelCircuit parallelCircuit2 = new ParallelCircuit();
                 SerialCircuit serialCircuit = new SerialCircuit();
 
                 parallelCircuit1.AddComponent(c1);
                 parallelCircuit1.AddComponent(l1);
-                //parallelCircuit2.AddComponent(l2);
-                //parallelCircuit2.AddComponent(r1);
+                parallelCircuit2.AddComponent(l2);
+                parallelCircuit2.AddComponent(r1);
 
                 serialCircuit.AddComponent(parallelCircuit1);
-                //serialCircuit.AddComponent(parallelCircuit2);
                 serialCircuit.AddComponent(l3);
+                serialCircuit.AddComponent(parallelCircuit2);
 
                 return serialCircuit;
 
@@ -249,5 +261,6 @@ namespace CircuitView
                 textBoxImpedance.Text = Convert.ToString(_circuit.CalculateZ(_freguency));
             }
         }
+        #endregion
     }
 }

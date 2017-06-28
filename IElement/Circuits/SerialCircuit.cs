@@ -48,8 +48,6 @@ namespace Elements
             _components.Remove(component);
         }
 
-       
-
         /// <summary>
         /// Возвращает примитивы содержащиеся в схеме
         /// </summary>
@@ -106,6 +104,9 @@ namespace Elements
             }
         }
 
+        /// <summary>
+        /// Возвращает коллекцию компонентов
+        /// </summary>
         public List<IComponent> Components
         {
             get
